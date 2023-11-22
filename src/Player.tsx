@@ -1,11 +1,12 @@
 import React, { useContext, useMemo } from 'react';
 import { Internals, useVideoConfig } from 'remotion';
-import { View, ViewProps } from 'react-native';
+import { View, ViewProps, ViewStyle } from 'react-native';
 import { calculateCanvasTransformation } from './calculate-scale';
 
 type Props = {
   width: number;
   height: number;
+  style: ViewStyle;
 };
 
 export const Player: React.FC<Props> = (props) => {
@@ -55,7 +56,7 @@ function InnerPlayer(props: Props) {
   }, [centerX, centerY]);
 
   return (
-    <View style={outer}>
+    <View style={{ ...outer, ...props.style }}>
       <View style={style}>
         <Comp {...(defaultProps as {})} />
       </View>
