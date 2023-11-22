@@ -33,8 +33,9 @@ const InnerControls: React.FC = () => {
   const onValueChange = useCallback(
     (val: number) => {
       setFrame(val);
+      setPlaying(false);
     },
-    [setFrame]
+    [setFrame, setPlaying]
   );
 
   const togglePlaying = useCallback(() => {
